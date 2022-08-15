@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileTag>lizard</DockerfileTag>
+    <Version>1.1.0</Version>
+    <Authors>Daniel James Thorne</Authors>
+    <RepositoryUrl>https://github.com/rombethor/lizard</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
