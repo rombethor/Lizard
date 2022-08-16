@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lizard", "Lizard\Lizard.csproj", "{67436060-5FF6-4E1F-A1A7-5731CA6B896E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lizard", "Lizard\Lizard.csproj", "{67436060-5FF6-4E1F-A1A7-5731CA6B896E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lizard.Monitor", "Lizard.Monitor\Lizard.Monitor.csproj", "{067D0900-4A0A-488E-BEBD-14330561BF40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lizard.Monitor", "Lizard.Monitor\Lizard.Monitor.csproj", "{067D0900-4A0A-488E-BEBD-14330561BF40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lizard.Models", "Lizard.Models\Lizard.Models.csproj", "{F1F129CF-C524-41DC-B795-8F453E8ED1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lizard.Models", "Lizard.Models\Lizard.Models.csproj", "{F1F129CF-C524-41DC-B795-8F453E8ED1AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B0200C20-D95B-4040-A5B5-6EC7AC8037BC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
