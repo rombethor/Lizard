@@ -26,7 +26,7 @@ app.UseHealthChecks("/healthz");
 var messageQueueListener = new Lizard.Messaging.MessageQueueListener(app.Configuration);
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || !string.IsNullOrWhiteSpace(app.Configuration["swagger"]))
 {
     app.UseSwagger();
     app.UseSwaggerUI();
