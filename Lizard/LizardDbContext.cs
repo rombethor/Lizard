@@ -16,6 +16,9 @@ namespace Lizard
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var fk in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetForeignKeys()).Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade))
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+
             modelBuilder.Entity<LogEntry>()
                 .Property(p => p.LogEntryID)
                 .UseIdentityColumn(long.MinValue, 1);
