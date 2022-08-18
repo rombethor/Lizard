@@ -47,7 +47,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "Source",
                         principalColumn: "SourceID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,7 +66,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "LogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,7 +89,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "LogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,7 +112,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "LogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,14 +132,14 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "ExceptionLogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_InnerExceptionLogEntry_ExceptionLogEntry_OuterExceptionLogEntryID",
                         column: x => x.OuterExceptionLogEntryID,
                         principalSchema: "lizard",
                         principalTable: "ExceptionLogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -160,7 +160,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "ExceptionLogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -182,7 +182,7 @@ namespace Lizard.Migrations
                         principalSchema: "lizard",
                         principalTable: "HttpRequestLogEntry",
                         principalColumn: "LogEntryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
