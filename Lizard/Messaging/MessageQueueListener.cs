@@ -133,6 +133,7 @@ namespace Lizard.Messaging
                             };
                         }
                     }
+                    db.LogEntries.Add(entity);
                     db.SaveChanges();
                 }
 
