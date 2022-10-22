@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Daniel James Thorne</Authors>
     <Description>RabbitMQ message client for reporting to the Lizard service.</Description>
     <Copyright>Daniel James Thorne</Copyright>
