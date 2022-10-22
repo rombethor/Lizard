@@ -27,11 +27,5 @@ namespace Lizard.Controllers
             });
         }
 
-        [HttpPost("migrate")]
-        public IActionResult Migrate()
-        {
-            db.Database.Migrate();
-            return Ok();
-        }
     }
 }
