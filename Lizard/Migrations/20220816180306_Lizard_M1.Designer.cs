@@ -203,7 +203,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.LogEntry", "LogEntry")
                         .WithOne("Exception")
                         .HasForeignKey("Lizard.Entities.ExceptionLogEntry", "LogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("LogEntry");
@@ -214,7 +214,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.LogEntry", "LogEntry")
                         .WithOne("HttpRequest")
                         .HasForeignKey("Lizard.Entities.HttpRequestLogEntry", "LogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("LogEntry");
@@ -225,7 +225,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.HttpRequestLogEntry", "Request")
                         .WithOne("Response")
                         .HasForeignKey("Lizard.Entities.HttpResponseLogEntry", "LogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Request");
@@ -236,13 +236,13 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.ExceptionLogEntry", "InnerExceptionLogEntry")
                         .WithOne("OuterExceptionLogEntry")
                         .HasForeignKey("Lizard.Entities.InnerExceptionReference", "InnerExceptionLogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Lizard.Entities.ExceptionLogEntry", "OuterExceptionLogEntry")
                         .WithOne("InnerExceptionLogEntry")
                         .HasForeignKey("Lizard.Entities.InnerExceptionReference", "OuterExceptionLogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("InnerExceptionLogEntry");
@@ -255,7 +255,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.Source", "Source")
                         .WithMany()
                         .HasForeignKey("SourceID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Source");
@@ -266,7 +266,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.LogEntry", "LogEntry")
                         .WithMany("Occurrences")
                         .HasForeignKey("LogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("LogEntry");
@@ -277,7 +277,7 @@ namespace Lizard.Migrations
                     b.HasOne("Lizard.Entities.ExceptionLogEntry", "ExceptionLogEntry")
                         .WithOne("StackTrace")
                         .HasForeignKey("Lizard.Entities.StackTrace", "ExceptionLogEntryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ExceptionLogEntry");

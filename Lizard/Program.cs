@@ -1,4 +1,5 @@
 using Lizard;
+using Lizard.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,11 +18,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecks()
+    .AddCheck("readiness", new ReadinessHealthCheck(builder.Configuration));
 
 var app = builder.Build();
 
 app.UseHealthChecks("/healthz");
+app.MapHealthChecks("/readyz", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
+{
+    Predicate = x => x.Tags.Contains("readiness")
+});
 
 var messageQueueListener = new Lizard.Messaging.MessageQueueListener(app.Configuration);
 

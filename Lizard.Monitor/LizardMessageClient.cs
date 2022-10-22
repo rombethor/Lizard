@@ -1,6 +1,8 @@
 ﻿using RabbitMQ.Client;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks.Dataflow;
 
 namespace Lizard.Monitor
 {
@@ -44,17 +46,60 @@ namespace Lizard.Monitor
             channel = connection.CreateModel();
         }
 
+        /// <summary>
+        /// Send an exception to be logged
+        /// </summary>
+        /// <param name="ex"></param>
         public void SendException(Exception ex)
         {
-            var exc = new Models.ExceptionAddOptions(ex);
-            var data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(exc)).ToArray();
+            var log = new Models.LogEntryAddOptions()
+            {
+                Exception = new Models.ExceptionAddOptions(ex),
+                Message = ex.Message,
+                Occurred = DateTime.UtcNow,
+                Source = GetSource()
+            };
+            //var data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(log)).ToArray();
+            //channel.BasicPublish("", "lizard", null, data);
+            SendLog(log);
+        }
+
+        /// <summary>
+        /// Send a message to be logged
+        /// </summary>
+        /// <param name="message"></param>
+        public void SendMessage(string message)
+        {
+            var log = new Models.LogEntryAddOptions()
+            {
+                Source = GetSource(),
+                Message = message,
+                Occurred = DateTime.UtcNow
+            };
+            SendLog(log);
+        }
+
+        /// <summary>
+        /// Send a custom log entry
+        /// </summary>
+        /// <param name="options"></param>
+        public void SendLog(Models.LogEntryAddOptions options)
+        {
+            if (options.Source == null)
+                options.Source = GetSource();
+            var data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(options)).ToArray();
             channel.BasicPublish("", "lizard", null, data);
         }
 
-        public void SendLog(Models.LogEntryAddOptions options)
+        private Models.SourceAddOptions GetSource()
         {
-            var data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(options)).ToArray();
-            channel.BasicPublish("", "lizard", null, data);
+            var name = Assembly.GetEntryAssembly()?.GetName();
+            var source = new Models.SourceAddOptions()
+            {
+                Name = name?.Name ?? string.Empty,
+                Version = name?.Version?.ToString() ?? string.Empty
+            };
+            return source;
         }
 
     }

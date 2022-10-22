@@ -39,6 +39,7 @@ namespace Lizard.Messaging
 
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
+            channel.BasicQos(0, 20, false);
 
             var args = new Dictionary<string, object?>();
             args.Add("x-message-ttl", 3600000);
@@ -133,6 +134,7 @@ namespace Lizard.Messaging
                             };
                         }
                     }
+                    db.LogEntries.Add(entity);
                     db.SaveChanges();
                 }
 
